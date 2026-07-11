@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>ZOPPO | Custom Fridge Art Order</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet" />
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-on-surface": "#f1f0f9",
+                        "on-primary-container": "#8aa4ff",
+                        "error": "#ba1a1a",
+                        "outline": "#747684",
+                        "on-surface": "#1a1b22",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#faf8ff",
+                        "primary": "#002068",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c4c5d5",
+                        "surface-dim": "#dad9e2",
+                        "surface-container": "#eeedf6",
+                        "surface-container-high": "#e8e7f0",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#735c00",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-container-low": "#f4f3fc",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#153ea3",
+                        "tertiary-container": "#cca730",
+                        "on-primary-fixed": "#00164e",
+                        "on-tertiary-fixed": "#241a00",
+                        "background": "#faf8ff",
+                        "primary-container": "#003399",
+                        "on-secondary-container": "#406e00",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#1a1b22",
+                        "surface": "#faf8ff",
+                        "on-secondary-fixed-variant": "#2c5000",
+                        "on-surface-variant": "#444653",
+                        "secondary": "#3d6a00",
+                        "secondary-fixed": "#97fc00",
+                        "on-tertiary-container": "#4f3d00",
+                        "surface-tint": "#3557bc",
+                        "inverse-primary": "#b5c4ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e2e1eb",
+                        "secondary-container": "#95f900",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-secondary-fixed": "#0f2000",
+                        "secondary-fixed-dim": "#84dd00",
+                        "surface-container-highest": "#e2e1eb",
+                        "primary-fixed": "#dce1ff",
+                        "inverse-surface": "#2f3037"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        gutter: "24px",
+                        "section-gap": "120px"
+                    },
+                    fontFamily: {
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "headline-sm": ["24px", { lineHeight: "1.4", fontWeight: "700" }],
+                        "display-lg-mobile": ["40px", { lineHeight: "1.2", letterSpacing: "0.01em", fontWeight: "800" }],
+                        "headline-md": ["32px", { lineHeight: "1.3", letterSpacing: "0.01em", fontWeight: "700" }],
+                        "display-lg": ["64px", { lineHeight: "1.1", letterSpacing: "0.02em", fontWeight: "800" }],
+                        "label-caps": ["12px", { lineHeight: "1.0", letterSpacing: "0.1em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .soft-card-shadow {
+            box-shadow: 0 40px 80px -20px rgba(0, 32, 104, 0.04);
+        }
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 50px 100px -20px rgba(0, 32, 104, 0.08);
+        }
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none !important;
+            border-color: #002068 !important;
+            box-shadow: 0 0 0 2px rgba(0, 32, 104, 0.1) !important;
+        }
+        .input-error-border {
+            border: 2px solid #ba1a1a !important;
+        }
+        .input-error-border:focus {
+            border-color: #ba1a1a !important;
+            box-shadow: 0 0 0 2px rgba(186, 26, 26, 0.12) !important;
+        }
+        .error-message {
+            color: #ba1a1a;
+            font-size: 13px;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 6px;
+            padding-left: 4px;
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: all 0.25s ease;
+            pointer-events: none;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .error-message.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            max-height: 40px;
+        }
+        .error-message .material-symbols-outlined {
+            font-size: 16px;
+        }
+        .custom-checkbox:checked {
+            background-color: #002068;
+            border-color: #002068;
+        }
+        .toast {
+            position: fixed;
+            top: 100px;
+            right: 24px;
+            z-index: 100;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            10%,
+            50%,
+            90% {
+                transform: translateX(-4px);
+            }
+            30%,
+            70% {
+                transform: translateX(4px);
+            }
+        }
+        .shake {
+            animation: shake 0.4s ease;
+        }
+        .checkbox-error {
+            outline: 2px solid #ba1a1a;
+            outline-offset: 2px;
+            border-radius: 8px;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#FDFCFB] text-on-surface font-body-md overflow-x-hidden">
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav bg-white/70 border-none shadow-sm h-20 flex items-center">
+    <div class="max-w-container-max mx-auto w-full px-margin-desktop flex justify-between items-center">
+      <div class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">ZOPPO</div>
+      <div class="hidden md:flex space-x-8">
+        <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Collections</a>
+        <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Stories</a>
+        <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Our Craft</a>
+        <a class="font-label-caps text-label-caps text-primary border-b-2 border-primary pb-1" href="#">Custom Order</a>
+      </div>
+      <div class="flex items-center space-x-6">
+        <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">search</span>
+        <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">shopping_bag</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-32 pb-section-gap">
+    <header class="max-w-4xl mx-auto px-margin-mobile md:px-0 text-center mb-16">
+      <span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">PREMIUM FRIDGE ART</span>
+      <h1 class="font-display-lg text-display-lg md:text-display-lg text-primary mb-6 leading-tight">
+        POV: Your Camera Roll Becomes Fridge Art
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+        Turn your favorite memories into custom die-cut magnets! Upload your photos, choose your quantity, and we'll transform them into premium fridge magnets. Pan India shipping available. Stick Your Story, Your Way &darr;
+      </p>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-margin-mobile md:px-0">
+      <form class="space-y-12" id="fridgeArtForm" novalidate>
+        <!-- Section 1: Personal Info -->
+        <section class="bg-white p-8 md:p-12 rounded-[24px] soft-card-shadow hover-lift">
+          <div class="flex items-center space-x-4 mb-8">
+            <div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined">person</span>
+            </div>
+            <h2 class="font-headline-sm text-headline-sm text-primary">Personal Information</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label class="font-label-caps text-label-caps text-on-surface-variant" for="firstName">First Name <span class="text-error">*</span></label>
+              <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md" placeholder="John" required type="text" id="firstName" name="firstName" autocomplete="given-name" />
+              <div class="error-message" id="firstNameError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please enter your first name (at least 2 characters, letters only)</span></div>
+            </div>
+            <div class="space-y-2">
+              <label class="font-label-caps text-label-caps text-on-surface-variant" for="lastName">Last Name <span class="text-error">*</span></label>
+              <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md" placeholder="Doe" required type="text" id="lastName" name="lastName" autocomplete="family-name" />
+              <div class="error-message" id="lastNameError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please enter your last name (letters only)</span></div>
+            </div>
+            <div class="space-y-2">
+              <label class="font-label-caps text-label-caps text-on-surface-variant" for="whatsapp">WhatsApp Number <span class="text-error">*</span></label>
+              <div class="relative">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 text-xl">chat</span>
+                <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] pl-12 pr-6 py-4 text-primary font-body-md" placeholder="+91 98765 43210" required type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" />
+              </div>
+              <div class="error-message" id="whatsappError"><span class="material-symbols-outlined">error</span> <span class="error-text">Enter a valid 10-digit mobile number (e.g. +91 98765 43210)</span></div>
+            </div>
+            <div class="space-y-2">
+              <label class="font-label-caps text-label-caps text-on-surface-variant" for="alternateContact">Alternate Contact <span class="text-error">*</span></label>
+              <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md" placeholder="Mobile Number" required type="tel" id="alternateContact" name="alternateContact" autocomplete="tel" />
+              <div class="error-message" id="alternateContactError"><span class="material-symbols-outlined">error</span> <span class="error-text">Enter a valid 10-digit alternate number</span></div>
+            </div>
+            <div class="space-y-2">
+              <label class="font-label-caps text-label-caps text-on-surface-variant" for="email">Email Address <span class="text-error">*</span></label>
+              <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md" placeholder="john@example.com" required type="email" id="email" name="email" autocomplete="email" />
+              <div class="error-message" id="emailError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please enter a valid email address (e.g. name@domain.com)</span></div>
+            </div>
+            <div class="space-y-2">
+              <label class="font-label-caps text-label-caps text-on-surface-variant" for="instagram">Instagram Username <span class="text-error">*</span></label>
+              <div class="relative">
+                <span class="absolute left-6 top-1/2 -translate-y-1/2 text-on-surface-variant/50 font-bold">@</span>
+                <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] pl-12 pr-6 py-4 text-primary font-body-md" placeholder="username" required type="text" id="instagram" name="instagram" />
+              </div>
+              <div class="error-message" id="instagramError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please enter your Instagram username (e.g. @username)</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: Shipping -->
+        <section class="bg-white p-8 md:p-12 rounded-[24px] soft-card-shadow hover-lift">
+          <div class="flex items-center space-x-4 mb-8">
+            <div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined">local_shipping</span>
+            </div>
+            <h2 class="font-headline-sm text-headline-sm text-primary">Shipping Address</h2>
+          </div>
+          <div class="space-y-6">
+            <div class="space-y-2">
+              <label class="font-label-caps text-label-caps text-on-surface-variant" for="addressLine1">Address Line 1 <span class="text-error">*</span></label>
+              <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md" placeholder="House No, Building, Street" required type="text" id="addressLine1" name="addressLine1" autocomplete="address-line1" />
+              <div class="error-message" id="addressLine1Error"><span class="material-symbols-outlined">error</span> <span class="error-text">Please enter your street address (at least 5 characters)</span></div>
+            </div>
+            <div class="space-y-2">
+              <label class="font-label-caps text-label-caps text-on-surface-variant" for="addressLine2">Address Line 2 <span class="text-error">*</span></label>
+              <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md" placeholder="Apartment, Suite, Unit" required type="text" id="addressLine2" name="addressLine2" autocomplete="address-line2" />
+              <div class="error-message" id="addressLine2Error"><span class="material-symbols-outlined">error</span> <span class="error-text">Please enter apartment, suite, or unit details</span></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label class="font-label-caps text-label-caps text-on-surface-variant" for="area">Area / Landmark <span class="text-error">*</span></label>
+                <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md" placeholder="Near Central Park" required type="text" id="area" name="area" />
+                <div class="error-message" id="areaError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please enter your area or landmark</span></div>
+              </div>
+              <div class="space-y-2">
+                <label class="font-label-caps text-label-caps text-on-surface-variant" for="city">City <span class="text-error">*</span></label>
+                <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md" placeholder="Mumbai" required type="text" id="city" name="city" autocomplete="address-level2" />
+                <div class="error-message" id="cityError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please enter your city name</span></div>
+              </div>
+              <div class="space-y-2">
+                <label class="font-label-caps text-label-caps text-on-surface-variant" for="state">State <span class="text-error">*</span></label>
+                <select class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md appearance-none" id="state" name="state" required>
+                  <option value="">Select your state</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="West Bengal">West Bengal</option>
+                  <option value="Other">Other</option>
+                </select>
+                <div class="error-message" id="stateError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please select your state</span></div>
+              </div>
+              <div class="space-y-2">
+                <label class="font-label-caps text-label-caps text-on-surface-variant" for="pincode">PIN Code <span class="text-error">*</span></label>
+                <input class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md" placeholder="400001" required type="text" id="pincode" name="pincode" inputmode="numeric" autocomplete="postal-code" maxlength="6" />
+                <div class="error-message" id="pincodeError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please enter a valid 6-digit PIN code</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3: Billing -->
+        <section class="bg-white p-8 md:p-12 rounded-[24px] soft-card-shadow hover-lift transition-all duration-500">
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">receipt_long</span>
+              </div>
+              <h2 class="font-headline-sm text-headline-sm text-primary">Billing Details</h2>
+            </div>
+            <div class="flex items-center space-x-3">
+              <span class="font-label-caps text-label-caps text-on-surface-variant">Same as Shipping?</span>
+              <button class="w-12 h-6 rounded-full bg-secondary-container relative transition-colors duration-300" id="billingToggle" type="button">
+                <span class="w-4 h-4 rounded-full bg-white absolute top-1 left-7 shadow-sm transition-all duration-300" id="toggleHandle"></span>
+              </button>
+            </div>
+          </div>
+          <div class="hidden space-y-6 pt-4 border-t border-surface-variant mt-4" id="billingAddressFields">
+            <div class="space-y-2">
+              <label class="font-label-caps text-label-caps text-on-surface-variant" for="billingAddress">Billing Address <span class="text-error">*</span></label>
+              <textarea class="w-full bg-[#F0F4F8] border-none rounded-[24px] px-6 py-4 text-primary font-body-md h-32 resize-none" placeholder="Enter complete billing address..." id="billingAddress" name="billingAddress"></textarea>
+              <div class="error-message" id="billingAddressError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please enter your billing address (at least 10 characters)</span></div>
+            </div>
+          </div>
+          <input type="hidden" name="sameAsShipping" id="sameAsShipping" value="true" />
+        </section>
+
+        <!-- Section 4: Photo Upload -->
+        <section class="bg-white p-8 md:p-12 rounded-[24px] soft-card-shadow hover-lift">
+          <div class="flex items-center space-x-4 mb-8">
+            <div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined">cloud_upload</span>
+            </div>
+            <h2 class="font-headline-sm text-headline-sm text-primary">Upload Photos <span class="text-error">*</span></h2>
+          </div>
+          <div class="border-2 border-dashed border-outline-variant rounded-[24px] p-12 text-center group hover:border-primary transition-colors cursor-pointer relative overflow-hidden" id="dropZone">
+            <input accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-10" id="fileInput" multiple type="file" name="photos" required />
+            <div class="relative z-0" id="uploadPrompt">
+              <div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-primary text-3xl">add_photo_alternate</span>
+              </div>
+              <p class="font-body-lg text-primary font-bold mb-1">Click or drag photos to upload</p>
+              <p class="font-body-md text-on-surface-variant">Up to 10 high-quality files (JPG, PNG) &mdash; <strong>at least 1 photo required</strong></p>
+            </div>
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-5 gap-4 hidden" id="filePreview"></div>
+          </div>
+          <div class="error-message mt-2" id="photosError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please upload at least one photo</span></div>
+        </section>
+
+        <!-- Section 5: Magnet Preferences -->
+        <section class="bg-white p-8 md:p-12 rounded-[24px] soft-card-shadow hover-lift">
+          <div class="flex items-center space-x-4 mb-8">
+            <div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined">photo_size_select_large</span>
+            </div>
+            <h2 class="font-headline-sm text-headline-sm text-primary">Magnet Preferences</h2>
+          </div>
+          <div class="space-y-8">
+            <div>
+              <label class="font-label-caps text-label-caps text-on-surface-variant mb-4 block">Select Size Preference <span class="text-error">*</span></label>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <button class="size-btn p-6 rounded-[24px] border text-center hover:border-primary transition-all border-surface-variant bg-surface-container-lowest" data-size='3"x4"' type="button">
+                  <div class="font-bold text-primary mb-1">3" x 4"</div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-widest">Mini Snap</div>
+                </button>
+                <button class="size-btn p-6 rounded-[24px] border text-center hover:border-primary transition-all border-primary bg-primary-container/5" data-size='4"x6"' type="button">
+                  <div class="font-bold text-primary mb-1">4" x 6"</div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-widest">Classic</div>
+                </button>
+                <button class="size-btn p-6 rounded-[24px] border text-center hover:border-primary transition-all border-surface-variant bg-surface-container-lowest" data-size='5"x7"' type="button">
+                  <div class="font-bold text-primary mb-1">5" x 7"</div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-widest">Grand</div>
+                </button>
+                <button class="size-btn p-6 rounded-[24px] border text-center hover:border-primary transition-all border-surface-variant bg-surface-container-lowest" data-size='6"x6"' type="button">
+                  <div class="font-bold text-primary mb-1">6" x 6"</div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-widest">Square</div>
+                </button>
+                <button class="size-btn p-6 rounded-[24px] border text-center hover:border-primary transition-all border-surface-variant bg-surface-container-lowest" data-size="Landscape" type="button">
+                  <div class="font-bold text-primary mb-1">Landscape</div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-widest">Panoramic</div>
+                </button>
+              </div>
+              <div class="error-message mt-2" id="sizeError"><span class="material-symbols-outlined">error</span> <span class="error-text">Please select a magnet size preference</span></div>
+            </div>
+          </div>
+          <input type="hidden" name="size" id="selectedSize" value='4"x6"' />
+        </section>
+
+        <!-- Section 6: Verifications -->
+        <section class="bg-white p-8 md:p-12 rounded-[24px] soft-card-shadow hover-lift">
+          <div class="flex items-center space-x-4 mb-8">
+            <div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined">verified_user</span>
+            </div>
+            <h2 class="font-headline-sm text-headline-sm text-primary">Final Verifications</h2>
+          </div>
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4 cursor-pointer group" id="orderVerificationWrap">
+              <div class="pt-1">
+                <input class="w-6 h-6 rounded-lg border-2 border-outline-variant text-primary focus:ring-primary/20 custom-checkbox" required type="checkbox" name="orderVerification" id="orderVerification" value="true" />
+              </div>
+              <span class="font-body-md text-on-surface-variant group-hover:text-primary transition-colors">
+                <strong>Order Verification:</strong> I certify that I own the rights to these images or have express permission to print them.
+              </span>
+            </div>
+            <div class="error-message -mt-4" id="orderVerificationError"><span class="material-symbols-outlined">error</span> <span class="error-text">You must accept the order verification to proceed</span></div>
+
+            <div class="flex items-start space-x-4 cursor-pointer group" id="finalConfirmationWrap">
+              <div class="pt-1">
+                <input class="w-6 h-6 rounded-lg border-2 border-outline-variant text-primary focus:ring-primary/20 custom-checkbox" required type="checkbox" name="finalConfirmation" id="finalConfirmation" value="true" />
+              </div>
+              <span class="font-body-md text-on-surface-variant group-hover:text-primary transition-colors">
+                <strong>Final Confirmation:</strong> I acknowledge that low-resolution images may result in pixelated prints and confirm my uploads are high quality.
+              </span>
+            </div>
+            <div class="error-message -mt-4" id="finalConfirmationError"><span class="material-symbols-outlined">error</span> <span class="error-text">You must accept the final confirmation to proceed</span></div>
+          </div>
+        </section>
+
+        <!-- Submit Button -->
+        <div class="pt-8">
+          <button class="w-full bg-primary text-white font-headline-sm py-6 rounded-full hover:shadow-[0_10px_40px_rgba(0,32,104,0.3)] hover:scale-[1.02] transition-all flex items-center justify-center space-x-4 border-2 border-transparent" id="submitBtn" type="submit">
+            <span>Place Custom Order</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+          <p class="text-center mt-6 text-on-surface-variant text-body-md">
+            Our team will contact you on WhatsApp to finalize the design.
+          </p>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="bg-surface-container-low w-full rounded-t-xl mt-section-gap">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-16 max-w-container-max mx-auto">
+      <div class="space-y-6">
+        <div class="font-headline-sm text-headline-sm font-bold text-primary">ZOPPO</div>
+        <p class="text-on-surface-variant body-md">Crafting memories into tangible art for your home. Made with love for the travelers and dreamers.</p>
+      </div>
+      <div class="space-y-4">
+        <h4 class="font-bold text-primary">Shop</h4>
+        <ul class="space-y-2 text-on-surface-variant">
+          <li><a class="hover:text-primary hover:underline transition-all" href="#">Shop All</a></li>
+          <li><a class="hover:text-primary hover:underline transition-all" href="#">Best Sellers</a></li>
+          <li><a class="hover:text-primary hover:underline transition-all" href="#">Gift Sets</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h4 class="font-bold text-primary">About</h4>
+        <ul class="space-y-2 text-on-surface-variant">
+          <li><a class="hover:text-primary hover:underline transition-all" href="#">Our Story</a></li>
+          <li><a class="hover:text-primary hover:underline transition-all" href="#">Sustainability</a></li>
+          <li><a class="hover:text-primary hover:underline transition-all" href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h4 class="font-bold text-primary">Newsletter</h4>
+        <div class="flex">
+          <input class="bg-white border-none rounded-l-full px-4 py-2 w-full" placeholder="Your email" type="email" />
+          <button class="bg-primary text-white px-6 rounded-r-full font-bold">Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-desktop py-8 border-t border-surface-variant/30 text-center text-on-surface-variant text-body-md">
+      &copy; 2024 ZOPPO Travel Memories. All rights reserved.
+    </div>
+  </footer>
+
+  <div class="toast -translate-y-4 opacity-0 pointer-events-none" id="toast"></div>
+
+  <script>
+    (function() {
+      // ---- UI toggles ----
+      var billingToggle = document.getElementById('billingToggle');
+      var toggleHandle = document.getElementById('toggleHandle');
+      var billingFields = document.getElementById('billingAddressFields');
+      var sameAsShippingInput = document.getElementById('sameAsShipping');
+      var isSame = true;
+
+      billingToggle.addEventListener('click', function() {
+        isSame = !isSame;
+        sameAsShippingInput.value = isSame ? 'true' : 'false';
+        if (isSame) {
+          billingToggle.classList.remove('bg-primary');
+          billingToggle.classList.add('bg-secondary-container');
+          toggleHandle.classList.remove('left-1');
+          toggleHandle.classList.add('left-7');
+          billingFields.classList.add('hidden');
+        } else {
+          billingToggle.classList.add('bg-primary');
+          billingToggle.classList.remove('bg-secondary-container');
+          toggleHandle.classList.add('left-1');
+          toggleHandle.classList.remove('left-7');
+          billingFields.classList.remove('hidden');
+        }
+        clearFieldError('billingAddress');
+      });
+
+      // ---- Size selection ----
+      var sizeBtns = document.querySelectorAll('.size-btn');
+      var selectedSize = document.getElementById('selectedSize');
+      sizeBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          sizeBtns.forEach(function(b) {
+            b.classList.remove('border-primary', 'bg-primary-container/5');
+            b.classList.add('border-surface-variant', 'bg-surface-container-lowest');
+          });
+          btn.classList.add('border-primary', 'bg-primary-container/5');
+          btn.classList.remove('border-surface-variant', 'bg-surface-container-lowest');
+          selectedSize.value = btn.getAttribute('data-size');
+          clearFieldError('size');
+        });
+      });
+
+      // ---- File preview ----
+      var fileInput = document.getElementById('fileInput');
+      var filePreview = document.getElementById('filePreview');
+      var uploadPrompt = document.getElementById('uploadPrompt');
+
+      fileInput.addEventListener('change', function(e) {
+        var files = e.target.files;
+        filePreview.innerHTML = '';
+        if (files.length > 0) {
+          filePreview.classList.remove('hidden');
+          uploadPrompt.classList.add('hidden');
+          Array.from(files).slice(0, 10).forEach(function(file) {
+            var reader = new FileReader();
+            reader.onload = function(ev) {
+              var div = document.createElement('div');
+              div.className = 'aspect-square rounded-xl bg-cover bg-center shadow-sm border border-surface-variant';
+              div.style.backgroundImage = 'url(' + ev.target.result + ')';
+              filePreview.appendChild(div);
+            };
+            reader.readAsDataURL(file);
+          });
+        } else {
+          filePreview.classList.add('hidden');
+          uploadPrompt.classList.remove('hidden');
+        }
+        clearFieldError('photos');
+      });
+
+      // ---- Toast ----
+      function showToast(message, type) {
+        var toast = document.getElementById('toast');
+        var isError = type === 'error';
+        toast.innerHTML =
+          '<div class="flex items-center space-x-3 px-6 py-4 rounded-2xl shadow-xl ' +
+          (isError
+            ? 'bg-red-50 text-red-800 border border-red-200'
+            : 'bg-green-50 text-green-800 border border-green-200') +
+          '"><span class="material-symbols-outlined text-2xl">' +
+          (isError ? 'error_outline' : 'check_circle') +
+          '</span><span class="font-body-md font-medium">' + message + '</span></div>';
+        toast.classList.remove('-translate-y-4', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        setTimeout(function() {
+          toast.classList.add('-translate-y-4', 'opacity-0', 'pointer-events-none');
+          toast.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        }, 5000);
+      }
+
+      // ---- Validation helpers ----
+      var validationFields = [
+        { id: 'firstName', required: true, minLen: 2, pattern: /^[A-Za-z\s]+$/, msg: 'Please enter your first name (at least 2 characters, letters only)' },
+        { id: 'lastName', required: true, minLen: 1, pattern: /^[A-Za-z\s]+$/, msg: 'Please enter your last name (letters only)' },
+        { id: 'whatsapp', required: true, pattern: /^(\+?\d{1,3}[\s-]?)?\d{10}$/, msg: 'Enter a valid 10-digit mobile number (e.g. +91 98765 43210)', clean: function(v) { return v.replace(/[\s\-\(\)]/g, ''); } },
+        { id: 'alternateContact', required: true, pattern: /^(\+?\d{1,3}[\s-]?)?\d{10}$/, msg: 'Enter a valid 10-digit alternate number', clean: function(v) { return v.replace(/[\s\-\(\)]/g, ''); } },
+        { id: 'email', required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, msg: 'Please enter a valid email address (e.g. name@domain.com)' },
+        { id: 'instagram', required: true, minLen: 1, msg: 'Please enter your Instagram username (e.g. @username)' },
+        { id: 'addressLine1', required: true, minLen: 5, msg: 'Please enter your street address (at least 5 characters)' },
+        { id: 'addressLine2', required: true, minLen: 2, msg: 'Please enter apartment, suite, or unit details' },
+        { id: 'area', required: true, minLen: 3, msg: 'Please enter your area or landmark' },
+        { id: 'city', required: true, minLen: 2, pattern: /^[A-Za-z\s.]+$/, msg: 'Please enter your city name' },
+        { id: 'state', required: true, noDefault: true, msg: 'Please select your state' },
+        { id: 'pincode', required: true, pattern: /^\d{6}$/, msg: 'Please enter a valid 6-digit PIN code' },
+      ];
+
+      function getVal(id) {
+        var el = document.getElementById(id);
+        if (!el) return '';
+        return el.value.trim();
+      }
+
+      function getEl(id) {
+        return document.getElementById(id);
+      }
+
+      function getErrorEl(id) {
+        return document.getElementById(id + 'Error');
+      }
+
+      function showFieldError(id, message) {
+        var input = getEl(id);
+        var error = getErrorEl(id);
+        if (error) {
+          error.querySelector('.error-text').textContent = message || '';
+          error.classList.add('visible');
+        }
+        if (input) {
+          input.classList.add('input-error-border');
+          input.classList.add('shake');
+          setTimeout(function() { input.classList.remove('shake'); }, 500);
+        }
+      }
+
+      function clearFieldError(id) {
+        var input = getEl(id);
+        var error = getErrorEl(id);
+        if (error) error.classList.remove('visible');
+        if (input) input.classList.remove('input-error-border');
+      }
+
+      function clearAllErrors() {
+        validationFields.forEach(function(f) { clearFieldError(f.id); });
+        clearFieldError('billingAddress');
+        clearFieldError('photos');
+        clearFieldError('orderVerification');
+        clearFieldError('finalConfirmation');
+        clearFieldError('size');
+        var orderWrap = document.getElementById('orderVerificationWrap');
+        if (orderWrap) orderWrap.classList.remove('checkbox-error');
+        var finalWrap = document.getElementById('finalConfirmationWrap');
+        if (finalWrap) finalWrap.classList.remove('checkbox-error');
+      }
+
+      // ---- Live clear on input ----
+      validationFields.forEach(function(f) {
+        var el = getEl(f.id);
+        if (el) {
+          el.addEventListener('input', function() { clearFieldError(f.id); });
+          el.addEventListener('change', function() { clearFieldError(f.id); });
+          if (el.tagName === 'SELECT') {
+            el.addEventListener('change', function() { clearFieldError(f.id); });
+          }
+        }
+      });
+      ['billingAddress', 'photos', 'orderVerification', 'finalConfirmation'].forEach(function(id) {
+        var el = getEl(id);
+        if (el) {
+          if (el.type === 'checkbox') {
+            el.addEventListener('change', function() { clearFieldError(id); });
+          } else {
+            el.addEventListener('input', function() { clearFieldError(id); });
+          }
+        }
+      });
+
+      // ---- Main validation function ----
+      function validateForm() {
+        clearAllErrors();
+        var firstError = null;
+        var errors = [];
+
+        // Text fields
+        validationFields.forEach(function(f) {
+          var raw = getVal(f.id);
+          var val = f.clean ? f.clean(raw) : raw;
+          if (f.required && !val) {
+            errors.push({ id: f.id, msg: f.msg || 'This field is required' });
+            return;
+          }
+          if (val && f.minLen && val.length < f.minLen) {
+            errors.push({ id: f.id, msg: f.msg || 'Too short' });
+            return;
+          }
+          if (val && f.pattern && !f.pattern.test(val)) {
+            errors.push({ id: f.id, msg: f.msg || 'Invalid format' });
+            return;
+          }
+          if (val && f.noDefault) {
+            var el = getEl(f.id);
+            if (el && !el.value) {
+              errors.push({ id: f.id, msg: f.msg || 'Please select an option' });
+              return;
+            }
+          }
+        });
+
+        // Billing address (only when toggled to "different from shipping")
+        var isBillingSame = getVal('sameAsShipping') === 'true';
+        if (!isBillingSame) {
+          var billingVal = getVal('billingAddress');
+          if (!billingVal || billingVal.length < 10) {
+            errors.push({ id: 'billingAddress', msg: 'Please enter your billing address (at least 10 characters)' });
+          }
+        }
+
+        // Photos
+        if (!fileInput.files || fileInput.files.length === 0) {
+          errors.push({ id: 'photos', msg: 'Please upload at least one photo' });
+        }
+
+        // Checkboxes
+        if (!document.getElementById('orderVerification').checked) {
+          errors.push({ id: 'orderVerification', msg: 'You must accept the order verification to proceed' });
+        }
+        if (!document.getElementById('finalConfirmation').checked) {
+          errors.push({ id: 'finalConfirmation', msg: 'You must accept the final confirmation to proceed' });
+        }
+
+        // Show all errors
+        errors.forEach(function(e) {
+          showFieldError(e.id, e.msg);
+          if (!firstError) firstError = e.id;
+        });
+
+        // Scroll to first error
+        if (firstError) {
+          var scrollEl = getEl(firstError);
+          if (scrollEl) {
+            var offset = 140;
+            var top = scrollEl.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        }
+
+        return errors.length === 0;
+      }
+
+      // ---- Form submit ----
+      var form = document.getElementById('fridgeArtForm');
+      var submitBtn = document.getElementById('submitBtn');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (!validateForm()) {
+          showToast('Please fix the highlighted errors before continuing.', 'error');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+          '<span class="material-symbols-outlined animate-spin">sync</span><span>Processing...</span>';
+
+        var formData = {
+          firstName: getVal('firstName'),
+          lastName: getVal('lastName'),
+          whatsapp: getVal('whatsapp'),
+          alternateContact: getVal('alternateContact'),
+          email: getVal('email'),
+          instagram: getVal('instagram'),
+          addressLine1: getVal('addressLine1'),
+          addressLine2: getVal('addressLine2'),
+          area: getVal('area'),
+          city: getVal('city'),
+          state: getVal('state'),
+          pincode: getVal('pincode'),
+          sameAsShipping: getVal('sameAsShipping') === 'true',
+          billingAddress: getVal('billingAddress'),
+          size: getVal('selectedSize') || '4"x6"',
+          orderVerification: document.getElementById('orderVerification').checked,
+          finalConfirmation: document.getElementById('finalConfirmation').checked,
+          files: [],
+        };
+
+        var fileList = fileInput.files;
+        if (fileList.length > 0) {
+          for (var i = 0; i < Math.min(fileList.length, 10); i++) {
+            formData.files.push({
+              name: fileList[i].name,
+              size: fileList[i].size,
+              type: fileList[i].type,
+            });
+          }
+        }
+
+        fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        })
+        .then(function(res) {
+          if (!res.ok) throw new Error('Server error');
+          return res.json();
+        })
+        .then(function(data) {
+          if (data.success) {
+            submitBtn.classList.remove('bg-primary');
+            submitBtn.classList.add('bg-secondary');
+            submitBtn.innerHTML =
+              '<span class="material-symbols-outlined">check_circle</span><span>Order Sent! Check WhatsApp.</span>';
+            showToast(
+              'Success! Your ZOPPO Fridge Art request has been received. Our curator will contact you on WhatsApp shortly.',
+              'success'
+            );
+            form.querySelectorAll('input, textarea, select').forEach(function(el) {
+              if (el.type !== 'hidden' && el.type !== 'checkbox') el.value = '';
+            });
+            filePreview.innerHTML = '';
+            filePreview.classList.add('hidden');
+            uploadPrompt.classList.remove('hidden');
+            fileInput.value = '';
+            document.getElementById('orderVerification').checked = false;
+            document.getElementById('finalConfirmation').checked = false;
+            clearAllErrors();
+          } else {
+            throw new Error(data.message || 'Submission failed');
+          }
+        })
+        .catch(function(err) {
+          console.error('Submit error:', err);
+          showToast('Something went wrong. Please try again.', 'error');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML =
+            '<span>Place Custom Order</span><span class="material-symbols-outlined">arrow_forward</span>';
+          submitBtn.classList.remove('bg-secondary');
+          submitBtn.classList.add('bg-primary');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
