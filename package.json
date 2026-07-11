@@ -1,13 +1,5 @@
 {
   "name": "zoppo-form-site",
   "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "vercel dev",
-    "build": "echo 'Static site, no build needed'"
-  },
-  "dependencies": {
-    "@vercel/kv": "^1.0.1",
-    "@vercel/blob": "^0.22.1"
-  }
+  "private": true
 }
