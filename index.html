@@ -12,6 +12,8 @@
 </script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js">
 </script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js">
+</script>
 <script>
 // ===== FIREBASE CONFIG =====
 // Replace this object with your own Firebase project credentials.
@@ -29,12 +31,16 @@ var firebaseConfig = {
 };
 
 var FIRESTORE_READY = false;
+var STORAGE_READY = false;
 var db = null;
+var storage = null;
 
 try {
   firebase.initializeApp(firebaseConfig);
   db = firebase.firestore();
+  storage = firebase.storage();
   FIRESTORE_READY = true;
+  STORAGE_READY = true;
   console.log('Firebase initialized successfully.');
 } catch (e) {
   console.warn('Firebase not configured. Form submissions will be logged to console only.', e);
@@ -821,6 +827,43 @@ try {
         document.body.classList.remove('no-scroll');
       }
 
+      // ---- Upload files to Firebase Storage ----
+      function uploadFilesToStorage(files, submissionId) {
+        return new Promise(function(resolve, reject) {
+          if (!files || files.length === 0) {
+            resolve([]);
+            return;
+          }
+          if (!STORAGE_READY) {
+            console.log('Storage not available. Skipping file upload.');
+            resolve([]);
+            return;
+          }
+          var uploads = [];
+          for (var i = 0; i < Math.min(files.length, 10); i++) {
+            var file = files[i];
+            var timestamp = Date.now();
+            var safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+            var path = 'submissions/' + submissionId + '/' + timestamp + '_' + safeName;
+            var ref = storage.ref(path);
+            var task = ref.put(file);
+            uploads.push(
+              task.then(function(snapshot) {
+                return snapshot.ref.getDownloadURL();
+              }).then(function(url) {
+                return { name: file.name, url: url, type: file.type, size: file.size };
+              })
+            );
+          }
+          Promise.all(uploads).then(function(results) {
+            resolve(results);
+          }).catch(function(err) {
+            console.error('File upload error:', err);
+            reject(err);
+          });
+        });
+      }
+
       // ---- Firestore submit ----
       function submitToFirestore(formData) {
         return new Promise(function(resolve, reject) {
@@ -853,44 +896,41 @@ try {
           return;
         }
 
-        var formData = {
-          submittedAt: new Date().toISOString(),
-          firstName: getVal('firstName'),
-          lastName: getVal('lastName'),
-          whatsapp: getVal('whatsapp'),
-          alternateContact: getVal('alternateContact'),
-          email: getVal('email'),
-          instagram: getVal('instagram'),
-          addressLine1: getVal('addressLine1'),
-          addressLine2: getVal('addressLine2'),
-          area: getVal('area'),
-          city: getVal('city'),
-          state: getVal('state'),
-          pincode: getVal('pincode'),
-          sameAsShipping: getVal('sameAsShipping') === 'true',
-          billingAddress: getVal('billingAddress'),
-          size: getVal('selectedSize') || '4"x6"',
-          orderVerification: document.getElementById('orderVerification').checked,
-          finalConfirmation: document.getElementById('finalConfirmation').checked,
-          files: [],
-        };
-
         var fileList = fileInput.files;
-        if (fileList.length > 0) {
-          for (var i = 0; i < Math.min(fileList.length, 10); i++) {
-            formData.files.push({
-              name: fileList[i].name,
-              size: fileList[i].size,
-              type: fileList[i].type,
-            });
-          }
-        }
 
         // Lock everything
         showOverlay();
         submitBtn.disabled = true;
 
-        submitToFirestore(formData)
+        var submissionId = 'order_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+
+        uploadFilesToStorage(fileList, submissionId)
+          .then(function(fileResults) {
+            var formData = {
+              submissionId: submissionId,
+              submittedAt: new Date().toISOString(),
+              firstName: getVal('firstName'),
+              lastName: getVal('lastName'),
+              whatsapp: getVal('whatsapp'),
+              alternateContact: getVal('alternateContact'),
+              email: getVal('email'),
+              instagram: getVal('instagram'),
+              addressLine1: getVal('addressLine1'),
+              addressLine2: getVal('addressLine2'),
+              area: getVal('area'),
+              city: getVal('city'),
+              state: getVal('state'),
+              pincode: getVal('pincode'),
+              sameAsShipping: getVal('sameAsShipping') === 'true',
+              billingAddress: getVal('billingAddress'),
+              size: getVal('selectedSize') || '4"x6"',
+              orderVerification: document.getElementById('orderVerification').checked,
+              finalConfirmation: document.getElementById('finalConfirmation').checked,
+              files: fileResults,
+            };
+
+            return submitToFirestore(formData);
+          })
           .then(function(result) {
             hideOverlay();
             submitBtn.classList.remove('bg-primary');
